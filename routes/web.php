@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MathController;
+use App\Http\Controllers\EntriesController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,12 @@ Route::get('/join/', function(){
     return redirect()->to('/');
 });
 
-Route::get('/{di}', function($id){
-    return $id . 'のページ';
-});
 
 //laravel8からルートの設定方法が変わっているから注意↓
 Route::get('/sum/{x}/{y}/', [MathController::class, 'sum']);
+
+Route::get('/entries/', [EntriesController::class, 'index']);
+
+Route::get('/{di}', function($id){
+    return $id . 'のページ';
+});
