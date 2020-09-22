@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\MathController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::get('/archives/', function(){
     return view('archives.index');
@@ -36,3 +37,6 @@ Route::get('/join/', function(){
 Route::get('/{di}', function($id){
     return $id . 'のページ';
 });
+
+//laravel8からルートの設定方法が変わっているから注意↓
+Route::get('/sum/{x}/{y}/', [MathController::class, 'sum']);
