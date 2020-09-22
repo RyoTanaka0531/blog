@@ -18,16 +18,21 @@ Route::get('/', function () {
 });
 
 Route::get('/archives/', function(){
-    return '記事一覧';
+    return view('archives.index');
 });
 
-Route::get('/archives/{category}', function($category){
-    return $category . 'の一覧';
+Route::get('/archives/{category}/', function($category){
+    return view('archives.category', ['category' => $category]);
 });
 
 Route::post('/join/', function(){
     return '入会申し込み完了';
 });
+
+Route::get('/join/', function(){
+    return redirect()->to('/');
+});
+
 Route::get('/{di}', function($id){
     return $id . 'のページ';
 });
